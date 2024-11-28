@@ -23,7 +23,7 @@ def main():
             else:
                 node.get_logger().info("age: {}".format(response.age))
 
-            #break
+            break
 
     node.destroy_node()
     rclpy.shutdown()
