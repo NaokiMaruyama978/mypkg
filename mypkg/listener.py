@@ -2,16 +2,33 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int16
 
-rclpy.init()
-node = Node("listener")
+class Listener(Node):
+    def __init__(self):
+        super().__init__("listener")
+        self.sub = self.create_subscription(Int16, "countup", self.cb, 10)
 
-def cb(msg):
-    global node
-    node.get_logger().info("Listen: %d" % msg.data)
+    def cb(self, msg):
+        self.get_logger().info(f"Received: {msg.data}")
 
 def main():
-    pub = node.create_subscription(Int16, "countup", cb, 10)
+    rclpy.init()
+    node = Listener()
     rclpy.spin(node)
+    rclpy.shutdown()
+
+if __name__ == "__main__":
+    main()
+
+
+#def cb(msg):
+#    global node
+#    node.get_logger().info("Listen: %d" % msg.data)
+
+#def main():
+    
+    ##pub = node.create_subscription(Int16, "countup", cb, 10)
+    ##rclpy.spin(node)
+    
     #client = node.create_client(Query, 'query')
     #while not client.wait_for_service(timeout_sec=1.0):
     #    node.get_logger().info('待機中')
