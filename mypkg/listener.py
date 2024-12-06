@@ -8,7 +8,7 @@ class Listener(Node):
         self.sub = self.create_subscription(Int16, "countup", self.cb, 10)
 
     def cb(self, msg):
-        self.get_logger().info(f"Received: {msg.data}")
+        self.get_logger().info(f"Listen: {msg.data}")
 
 def main():
     rclpy.init()
