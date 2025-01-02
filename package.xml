@@ -7,9 +7,8 @@
   <maintainer email="s23c1135vq@s.chibakoudai.jp">maruyama</maintainer>
   <license>BSD-3-Clause</license>
   <exec_depend>rclpy</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
   <exec_depend>launch_ros</exec_depend>
-  <exec_depend>requests</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

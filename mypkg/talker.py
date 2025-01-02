@@ -1,50 +1,34 @@
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import NavSatFix
-import requests
+from std_msgs.msg import String
+import time
 
-class GPSPublisher(Node):
+class TimeCounter(Node):
     def __init__(self):
-        super().__init__('gps_publisher')
-        self.publisher_ = self.create_publisher(NavSatFix, '/gps_data', 10)
-        self.timer = self.create_timer(2.0, self.publish_gps_data)  # 1秒ごとにデータを送信
-        self.get_logger().info("GPS Publisher Node started")
+        super().__init__('time_counter')
+        self.publisher_ = self.create_publisher(String, '/time_count', 10)
+        self.timer = self.create_timer(1.0, self.publish_time)  # 1秒ごとにデータを送信
+        self.start_time = time.time()  # 開始時刻を記録
+        self.get_logger().info("Time Counter Node started")
 
-    def get_ip_location(self):
-        # IPアドレスから位置情報を取得するAPIを利用
-        response = requests.get('https://ipinfo.io')
-        data = response.json()
-        
-        # 緯度と経度を抽出
-        location = data['loc'].split(',')
-        latitude = float(location[0])  # 緯度
-        longitude = float(location[1])  # 経度
-        #self.get_logger().info(f"IP Location: Latitude: {latitude}, Longitude: {longitude}") 
-        return latitude, longitude
+    def publish_time(self):
+        elapsed_time = time.time() - self.start_time  # 経過時間を計算
+        hours = int(elapsed_time // 3600)  # 時間
+        minutes = int((elapsed_time % 3600) // 60)  # 分
+        seconds = int(elapsed_time % 60)  # 秒
 
-    def publish_gps_data(self):
-        # IPアドレスから位置情報を取得
-        latitude, longitude = self.get_ip_location()
+        # "時間:分:秒" の形式に整形
+        time_str = f"{hours:02}:{minutes:02}:{seconds:02}"
 
-        # NavSatFixメッセージを作成
-        gps_msg = NavSatFix()
-        gps_msg.latitude = latitude
-        gps_msg.longitude = longitude
-        gps_msg.altitude = 10.0  # 仮の高度 (10メートル)
-        
-        # 仮の精度情報
-        gps_msg.position_covariance = [0.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.5]
-        gps_msg.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
-        
-        # メッセージを送信
-        self.publisher_.publish(gps_msg)
-        
-        # ログに送信した内容を表示
-        self.get_logger().info(f"Published GPS: 緯度: {gps_msg.latitude:.6f}, 経度: {gps_msg.longitude:.6f}, 高度: {gps_msg.altitude:.2f}")
+        # メッセージを作成してパブリッシュ
+        msg = String()
+        msg.data = f"Elapsed time: {time_str}"
+        self.publisher_.publish(msg)
+        self.get_logger().info(f"経過時間: {time_str}")
 
 def main(args=None):
     rclpy.init(args=args)
-    node = GPSPublisher()
+    node = TimeCounter()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
