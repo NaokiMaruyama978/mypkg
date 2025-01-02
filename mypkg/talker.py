@@ -1,34 +1,40 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
-import time
+from datetime import datetime
 
-class TimeCounter(Node):
+class YearZodiacPublisher(Node):
     def __init__(self):
-        super().__init__('time_counter')
-        self.publisher_ = self.create_publisher(String, '/time_count', 10)
-        self.timer = self.create_timer(1.0, self.publish_time)  # 1秒ごとにデータを送信
-        self.start_time = time.time()  # 開始時刻を記録
-        self.get_logger().info("Time Counter Node started")
+        super().__init__('year_zodiac_publisher')
+        self.publisher_ = self.create_publisher(String, '/year_zodiac', 10)
+        self.timer = self.create_timer(2.0, self.publish_year_zodiac)  # 2秒ごとに更新
+        self.year = 2025  # 初期年を2025年に設定
+        #self.get_logger().info("Year and Zodiac Publisher Node started")
 
-    def publish_time(self):
-        elapsed_time = time.time() - self.start_time  # 経過時間を計算
-        hours = int(elapsed_time // 3600)  # 時間
-        minutes = int((elapsed_time % 3600) // 60)  # 分
-        seconds = int(elapsed_time % 60)  # 秒
+    def get_zodiac(self, year):
+        # 干支を計算（2025年を基準として）
+        zodiacs = ['辰[たつ]', '巳[み]', '午[うま]', '未[ひつじ]', '申[さる]', '酉[とり]', '戌[いぬ]', '亥[い]','子[ね]', '丑[うし]', '寅[とら]', '卯[う]']
+        return zodiacs[(year - 2024) % 12]
 
-        # "時間:分:秒" の形式に整形
-        time_str = f"{hours:02}:{minutes:02}:{seconds:02}"
-
-        # メッセージを作成してパブリッシュ
+    def publish_year_zodiac(self):
+        # 現在の年と対応する干支を取得
+        zodiac = self.get_zodiac(self.year)
+        message = f"{self.year}年の干支は{zodiac}"
+        
+        # メッセージを作成して送信
         msg = String()
-        msg.data = f"Elapsed time: {time_str}"
+        msg.data = message
         self.publisher_.publish(msg)
-        self.get_logger().info(f"経過時間: {time_str}")
+
+        # ログに送信した内容を表示
+        self.get_logger().info(f" {msg.data}")
+
+        # 年を1年増やす
+        self.year += 1
 
 def main(args=None):
     rclpy.init(args=args)
-    node = TimeCounter()
+    node = YearZodiacPublisher()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:

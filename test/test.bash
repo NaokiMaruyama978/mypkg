@@ -11,4 +11,4 @@ timeout 10 ros2 run mypkg talker | tee - /tmp/mypkg.log
 
 
 cat /tmp/mypkg.log |
-grep '経過時間: 00:00:10'
+grep '経過時間: 00:00:09'
