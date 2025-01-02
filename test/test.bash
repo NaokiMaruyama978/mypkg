@@ -11,4 +11,5 @@ timeout 10 ros2 run mypkg talker | tee - /tmp/mypkg.log
 
 
 cat /tmp/mypkg.log |
-grep '経過時間: 00:00:09'
+grep '2029年の干支は酉(とり)'
+ #2033年の干支は丑(うし)
