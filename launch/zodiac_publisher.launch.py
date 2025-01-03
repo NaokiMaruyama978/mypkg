@@ -6,9 +6,9 @@ import launch_ros.actions
 
 def generate_launch_description():
 
-    talker = launch_ros.actions.Node(
+    zodiac = launch_ros.actions.Node(
         package='mypkg',
-        executable='talker',
+        executable='zodiac_publisher',
         )
     #listener = launch_ros.actions.Node(
      #       package='mypkg',
@@ -16,4 +16,4 @@ def generate_launch_description():
        #     output='screen'
         #    )
     
-    return launch.LaunchDescription([talker]) #([talker, listener])
+    return launch.LaunchDescription([zodiac]) #([talker, listener])
