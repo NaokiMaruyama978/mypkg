@@ -23,7 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = mypkg.talker:main',
+            'zodiac_publisher = mypkg.zodiac_publisher:main',
             #'listener = mypkg.listener:main',
         ],
     },

@@ -13,7 +13,7 @@ class YearZodiacPublisher(Node):
 
     def get_zodiac(self, year):
         # 干支を計算（2025年を基準として）
-        zodiacs = ['辰[たつ]', '巳[み]', '午[うま]', '未[ひつじ]', '申[さる]', '酉[とり]', '戌[いぬ]', '亥[い]','子[ね]', '丑[うし]', '寅[とら]', '卯[う]']
+        zodiacs = ['辰', '巳', '午', '未', '申', '酉', '戌', '亥','子', '丑', '寅', '卯']
         return zodiacs[(year - 2024) % 12]
 
     def publish_year_zodiac(self):
