@@ -11,5 +11,5 @@ source $dir/.bashrc
 timeout 20 ros2 launch mypkg zodiac_publisher.launch.py > /tmp/mypkg.log
 
 # ログファイルの内容を検索
-cat /tmp/mypkg.log | grep -E '\s*2028年の干支は申\[さる\]'
+cat /tmp/mypkg.log | grep -E '\s*2030年の干支は戌\[いぬ\]'
 #cat /tmp/mypkg.log | grep '2028年の干支は申[さる]'
