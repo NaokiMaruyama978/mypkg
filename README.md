@@ -1,3 +1,6 @@
+
+## ロボットシステム学の課題2で作成したROS2のパッケージを用いたリポジトリです
+
 # ROS2 干支確認Publisher
 [![test](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml)
 
