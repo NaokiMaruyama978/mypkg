@@ -10,7 +10,7 @@
 
 ## ノード概要
 ### `zodiac_publisher` ノード
-- トピック名: `zodiac_publisher`
+- トピック名: `zodiac`
 - 2秒ごとに以下の形式のデータをパブリッシュします:
   ```
   年:YYYY 干支:zodiac(読み)
