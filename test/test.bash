@@ -8,7 +8,7 @@ colcon build
 source $dir/.bashrc
 
 # タイムアウト時間を設定
-timeout 20 ros2 launch mypkg zodiac_publisher.launch.py > /tmp/mypkg.log
+timeout 12 ros2 launch mypkg zodiac_publisher.launch.py > /tmp/mypkg.log
 
 # ログファイルの内容を検索
 cat /tmp/mypkg.log | grep '年:2028 干支:申(さる)'
