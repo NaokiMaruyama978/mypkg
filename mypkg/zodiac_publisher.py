@@ -24,7 +24,7 @@ class YearZodiacPublisher(Node):
     def publish_year_zodiac(self):
         # 現在の年と対応する干支を取得
         zodiac, zodiacs_yomi = self.get_zodiac(self.year)
-        message = f"年:{self.year},干支:{zodiac}({zodiacs_yomi})"
+        message = f"年:{self.year} 干支:{zodiac}({zodiacs_yomi})"
         
         # メッセージを作成して送信
         msg = String()
