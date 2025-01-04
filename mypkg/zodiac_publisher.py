@@ -9,7 +9,7 @@ from datetime import datetime
 class YearZodiacPublisher(Node):
     def __init__(self):
         super().__init__('year_zodiac_publisher')
-        self.publisher_ = self.create_publisher(String, '/year_zodiac', 10)
+        self.publisher_ = self.create_publisher(String, '/zodiac_publisher', 10)
         self.timer = self.create_timer(2.0, self.publish_year_zodiac)  # 2秒ごとに更新
         self.year = 2025  # 初期年を2025年に設定
         #self.get_logger().info("Year and Zodiac Publisher Node started")
