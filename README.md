@@ -25,12 +25,16 @@
 1. ワークスペースにパッケージをクローンします:
    ```
    cd ~/ros2_ws/src
+   ```
+   ```
    git clone　https://github.com/NaokiMaruyama978/mypkg.git
    ```
 
 2. パッケージをビルドします:
    ```
    cd ~/ros2_ws
+   ```
+   ```
    colcon build
    ```
 
