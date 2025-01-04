@@ -1,6 +1,3 @@
-
-## ロボットシステム学の課題2で作成したROS2のパッケージを用いたリポジトリです
-
 # ROS2 干支確認Publisher
 [![test](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml)
 
@@ -45,9 +42,17 @@
      ```
 
 ### ノードの実行
+## 実行コマンド
+### 送り手
+```
+ros2 run mypkg zodiac_publisher
+```
+### 受け取り手
+```
+ros2 topic echo zodiac
+```
 
 ## 実行例
-
 以下はノードを実行した際の出力例です:
 
 ### - 送り手側のログ
