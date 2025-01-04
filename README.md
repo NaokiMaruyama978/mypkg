@@ -72,4 +72,6 @@ data: 年:2030 干支:戌(いぬ)
 - このソフトウェアは 3条項BSDライセンス の下で再頒布および使用が許可されています。
 -  このパッケージのコードの一部は、下記のスライド（CC-BY-SA 4.0 by Ryuichi Ueda）のものを本人の許可を得て自身の著作としたものです。
     - [ryuichiueda/slides_marp/tree/master/robosys_2024](https://github.com/ryuichiueda/slides_marp/tree/master/robosys2024)
+- このパッケージのテストに利用したコンテナは下記のリンクのものを、本人の許可を得て使用しています
+  - [ryuichiueda/ubuntu22.04-ros2:latest](https://hub.docker.com/repository/docker/ryuichiueda/ubuntu22.04-ros2)
 - ©2025 Naoki Maruyama
