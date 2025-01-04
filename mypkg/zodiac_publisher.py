@@ -17,12 +17,14 @@ class YearZodiacPublisher(Node):
     def get_zodiac(self, year):
         # 干支を計算（2025年を基準として）
         zodiacs = ['辰', '巳', '午', '未', '申', '酉', '戌', '亥','子', '丑', '寅', '卯']
-        return zodiacs[(year - 2024) % 12]
+        zodiacs_yomi = ['たつ','み','うま','ひつじ','さる','とり','いぬ','い','ね','うし','とら','う']
+        index = (year - 2024) % 12
+        return zodiacs[index],zodiacs_yomi[index]
 
     def publish_year_zodiac(self):
         # 現在の年と対応する干支を取得
-        zodiac = self.get_zodiac(self.year)
-        message = f"年:{self.year},干支:{zodiac}"
+        zodiac, zodiacs_yomi = self.get_zodiac(self.year)
+        message = f"年:{self.year},干支:{zodiac}({zodiacs_yomi})"
         
         # メッセージを作成して送信
         msg = String()
