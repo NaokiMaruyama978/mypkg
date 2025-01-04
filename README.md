@@ -25,7 +25,7 @@
 1. ワークスペースにパッケージをクローンします:
    ```
    cd ~/ros2_ws/src
-   git clone https://github.com/Satoru1210/mypkg.git
+   git clone　https://github.com/NaokiMaruyama978/mypkg.git
    ```
 
 2. パッケージをビルドします:
