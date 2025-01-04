@@ -12,4 +12,5 @@ timeout 12 ros2 launch mypkg zodiac_publisher.launch.py > /tmp/mypkg.log
 
 # ログファイルの内容を検索
 #cat /tmp/mypkg.log | grep '年:2028 干支:申(さる)'
-cat /tmp/mypkg.log | grep '年:' | grep ' 干支:'
+cat /tmp/mypkg.log | grep '年:'
+cat /tmp/mypkg.log | grep '干支:'
