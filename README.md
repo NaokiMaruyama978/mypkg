@@ -41,8 +41,8 @@
      source ~/ros2_ws/install/setup.bash
      ```
 
-### ノードの実行
-## 実行コマンド
+## ノードの実行
+### 実行コマンド
 ### 送り手
 ```
 ros2 run mypkg zodiac_publisher
