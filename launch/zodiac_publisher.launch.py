@@ -10,10 +10,10 @@ def generate_launch_description():
         package='mypkg',
         executable='zodiac_publisher',
         )
-    #listener = launch_ros.actions.Node(
-     #       package='mypkg',
-      #      executable='listener',
-       #     output='screen'
-        #    )
+    listener = launch_ros.actions.Node(
+            package='mypkg',
+            executable='test_listener',
+            output='screen'
+            )
     
-    return launch.LaunchDescription([zodiac]) #([talker, listener])
+    return launch.LaunchDescription([zodiac, listener]) #([talker, listener])

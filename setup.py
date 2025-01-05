@@ -24,7 +24,7 @@ setup(
     entry_points={
         'console_scripts': [
             'zodiac_publisher = mypkg.zodiac_publisher:main',
-            #'listener = mypkg.listener:main',
+            'test_listener = mypkg.test_listener:main',
         ],
     },
 )
