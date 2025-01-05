@@ -32,7 +32,7 @@ class YearZodiacPublisher(Node):
         self.publisher_.publish(msg)
 
         # ログに送信した内容を表示
-        self.get_logger().info(f" {msg.data}")
+        #self.get_logger().info(f" {msg.data}")
 
         # 年を1年増やす
         self.year += 1
