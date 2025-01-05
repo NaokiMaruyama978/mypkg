@@ -18,29 +18,6 @@
 
 ### 必要条件 ###
    - ROS2をインストールしてください。
-     
-### パッケージのセットアップ
-
-1. ワークスペースにパッケージをクローンします:
-   ```
-   cd ~/ros2_ws/src
-   ```
-   ```
-   git clone　https://github.com/NaokiMaruyama978/mypkg.git
-   ```
-
-2. パッケージをビルドします:
-   ```
-   cd ~/ros2_ws
-   ```
-   ```
-   colcon build
-   ```
-3. ワークスペースをソース
-     ```bash
-     source ~/ros2_ws/install/setup.bash
-     ```
-
 ## ノードの実行
 ### 実行コマンド
 ### 送り手
