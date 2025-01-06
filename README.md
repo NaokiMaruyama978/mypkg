@@ -16,8 +16,7 @@
 ## 使用方法
 ### 実行準備
 1\. [odpt.com](https://developer.odpt.org/)でアカウントを作成し、APIキーを取得してください。   
-2\. fetch_posiiton.pyの17行目の`os.getenv('N2YO_API_KEY')`を取得したAPIキーに変更するか、`~/.bashrc`に`export N2YO_API_KEY='取得したAPIキー'`を追加してください。  
-3\. fetch_position.pyの18行目の`25544`を取得したい衛星のNORAD IDに変更してください。
+2\. train_delay_info.pyの23行目のself.api_key = `"3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa" `を取得したAPIキーに変更して下さい
 
 ### 必要条件 ###
    - ROS2をインストールしてください。
