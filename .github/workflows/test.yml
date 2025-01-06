@@ -12,6 +12,8 @@ jobs:
           apt-get install -y python3-pip
           pip3 install requests
       - name: build and test
+        env:
+         API_KEY: ${{ secrets.ODPT_API_KEY }}
         run : |
           rsync -av ./ /root/ros2_ws/src/mypkg/
           cd /root/ros2_ws
