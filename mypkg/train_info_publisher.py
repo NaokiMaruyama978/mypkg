@@ -18,7 +18,11 @@ class FilteredTrainInfoPublisher(Node):
     def __init__(self):
         super().__init__('filtered_train_info_publisher')
         self.publisher_ = self.create_publisher(String, 'train_delay_info', 10)
+<<<<<<< HEAD
         self.timer = self.create_timer(10.0, self.timer_callback)  # 10秒ごとに更新
+=======
+        self.timer = self.create_timer(60.0, self.timer_callback)  # 60秒ごとに更新
+>>>>>>> 79cfe55904c00fdf3e23cba780204c6d0033afe7
         self.api_url = "https://api.odpt.org/api/v4/odpt:TrainInformation"
         self.api_key = "3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa"  # 取得したAPIキーを設定
         self.target_railways = [
