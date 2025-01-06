@@ -26,9 +26,11 @@ $ ros2 run mypkg train_info_publisher
 $ ros2 topic echo train_delay_info
 ```
 ```
-data: 'Lat: -14.18630938, Lon: 129.04303749, Alt: 34366.78'
+data: '[Toei.Asakusa] 状況:現在、１５分以上の遅延はありません。 詳細:情報なし'
 ---
-data: 'Lat: -14.20007997, Lon: 129.04026218, Alt: 34365.72'
+data: '[Toei.Shinjuku] 状況:現在、１５分以上の遅延はありません。 詳細:情報なし'
+---
+data: '[Toei.Oedo] 状況:現在、１５分以上の遅延はありません。 詳細:情報なし'
 ---
 ```
 
