@@ -1,7 +1,7 @@
-# ROS2 遅延情報確認Publisher
 [![test](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml)
-
-このROS2パッケージは、都営新宿線の現在の遅延情報を表示する機能を持ちます。このパッケージはこれらの情報を定期的にパブリッシュする`train_info_publisher`ノードで構成されています。
+# mypkg
+- このリポジトリは授業で作成したROS 2のパッケージです。
+- このROS2パッケージは、都営浅草線・都営新宿線・都営大江戸線の現在の遅延情報を表示する機能を持ちます。このパッケージはこれらの情報を定期的にパブリッシュする`train_info_publisher`ノードで構成されています。
 
 ## ノード概要
 ### `train_info_publisher` ノード
@@ -14,7 +14,7 @@
 ## 使用方法
 ### 実行準備
 1\. [odpt.com](https://developer.odpt.org/)でアカウントを作成し、APIキーを取得してください。   
-2\. train_info_publisher.pyの23行目のself.api_key = `"3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa" `を取得したAPIキーに変更して下さい
+2\. `train_info_publisher.py`の23行目のself.api_key = `"3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa" `を取得したAPIキーに変更して下さい
 
 ### 端末1でtrain_info_publisher.pyを実行し、別の端末2でtopic確認した例
 端末1
