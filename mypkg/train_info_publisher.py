@@ -6,6 +6,7 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 import requests
+import sys
 
 class FilteredTrainInfoPublisher(Node):
     def __init__(self):
@@ -18,7 +19,7 @@ class FilteredTrainInfoPublisher(Node):
  
             "odpt.Railway:Toei.Shinjuku", 
                 ] 
-        self.get_logger().info('Filtered Train Info Publisher has started.')
+        #self.get_logger().info('Filtered Train Info Publisher has started.')
 
     def timer_callback(self):
         try:
@@ -36,11 +37,13 @@ class FilteredTrainInfoPublisher(Node):
                     status = train_info.get("odpt:trainInformationStatus", "情報なし")
                     text = train_info.get("odpt:trainInformationText", {}).get("ja", "詳細なし")
                     
-                    msg.data = f"[{railway}], 状況: {text}, 詳細: {status}"
+                    railway_name = railway.replace("odpt.Railway:", "")
+                    msg.data = f"[{railway_name}] 状況:{text} 詳細:{status}"
                     self.publisher_.publish(msg)
-                    self.get_logger().info(f'Published: {msg.data}')
+                    #self.get_logger().info(f'Published: {msg.data}')
         except Exception as e:
-            self.get_logger().error(f'Failed to fetch train info: {e}')
+            sys.exit(1)
+
 
 def main(args=None):
     rclpy.init(args=args)
