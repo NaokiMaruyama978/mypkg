@@ -43,5 +43,5 @@ data: '[Toei.Oedo] 状況:現在、１５分以上の遅延はありません。
   
 ## ライセンス
 - このソフトウェアは 3条項BSDライセンス の下で再頒布および使用が許可されています。
-- 詳細は[LICENSE](https://github.com/NaokiMaruyama978/mypkg/LICENSE)を確認してください。
+- 詳細は[LICENSE](https://github.com/NaokiMaruyama978/mypkg/blob/master/LICENSE)を確認してください。
 - ©2025 Naoki Maruyama
