@@ -26,12 +26,11 @@ $ ros2 run mypkg train_info_publisher
 $ ros2 topic echo train_delay_info
 ```
 ```
-data: '[Toei.Asakusa] 状況:現在、１５分以上の遅延はありません。 詳細:情報なし'
+data: '[Toei.Asakusa] 状況:浅草線は、16時31分頃、三田駅にて発生した急病人救護のため、押上駅方面行列車のダイヤが乱れてい ます。'
 ---
-data: '[Toei.Shinjuku] 状況:現在、１５分以上の遅延はありません。 詳細:情報なし'
+data: '[Toei.Shinjuku] 状況:現在、１５分以上の遅延はありません。'
 ---
-data: '[Toei.Oedo] 状況:現在、１５分以上の遅延はありません。 詳細:情報なし'
----
+data: '[Toei.Oedo] 状況:現在、１５分以上の遅延はありません。'
 ```
 ### テスト用コード
 - test_listener.py
