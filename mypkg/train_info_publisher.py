@@ -20,7 +20,7 @@ class FilteredTrainInfoPublisher(Node):
         self.publisher_ = self.create_publisher(String, 'train_delay_info', 10)
         self.timer = self.create_timer(60.0, self.timer_callback)  # 60秒ごとに更新
         self.api_url = "https://api.odpt.org/api/v4/odpt:TrainInformation"
-        self.api_key = "3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa"  # 取得したAPIキーを設定
+        self.api_key = "3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa"  
         self.target_railways = [
             "odpt.Railway:Toei.Shinjuku",  # 都営新宿線
             "odpt.Railway:Toei.Oedo",     # 都営大江戸線
@@ -35,7 +35,7 @@ class FilteredTrainInfoPublisher(Node):
             response.raise_for_status()
             train_info_list = response.json()
 
-            # 指定した路線の情報をフィルタリング
+            # 指定した路線の情報を取得
             for train_info in train_info_list:
                 railway = train_info.get("odpt:railway", "")
                 if railway in self.target_railways:
