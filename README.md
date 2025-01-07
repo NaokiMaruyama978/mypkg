@@ -1,12 +1,12 @@
 [![test](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml)
 # mypkg
 - このリポジトリは授業で作成したROS 2のパッケージです。
-- このROS2パッケージは、都営浅草線・都営新宿線・都営大江戸線の現在の遅延情報を表示する機能を持ちます。このパッケージはこれらの情報を定期的にパブリッシュする`train_info_publisher`ノードで構成されています。
+- このROS2パッケージは、都営浅草線・都営新宿線・都営大江戸線の現在の運行情報を表示する機能を持ちます。このパッケージはこれらの情報を定期的にパブリッシュする`train_info_publisher`ノードで構成されています。
 
 ## ノード概要
 ### `train_info_publisher` ノード
 - トピック名: `train_delay_info`
-- 60秒ごとに以下の形式で3つの路線の遅延データをパブリッシュします:
+- 60秒ごとに以下の形式で3つの路線の運行情報をパブリッシュします:
   ```
   [路線] 状況:XXXX　詳細:XXXX
   ```
