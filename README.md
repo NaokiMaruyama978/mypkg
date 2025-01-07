@@ -33,12 +33,15 @@ data: '[Toei.Shinjuku] 状況:現在、１５分以上の遅延はありませ�
 data: '[Toei.Oedo] 状況:現在、１５分以上の遅延はありません。 詳細:情報なし'
 ---
 ```
+### テスト用コード
+- test_listener.py
+- train_info_publisher.launch.py
 
 ## 動作環境
-
-このパッケージは以下の環境で動作が確認済み:
-- **OS**: Ubuntu 22.04 LTS
-
+このパッケージは以下の環境で動作が確認済みです。
+- **OS**：Ubuntu 22.04 LTS
+- **ROS2 version**：humble
+  
 ## ライセンス
 - このソフトウェアは 3条項BSDライセンス の下で再頒布および使用が許可されています。
 - ©2025 Naoki Maruyama
