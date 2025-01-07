@@ -1,4 +1,3 @@
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![test](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/NaokiMaruyama978/mypkg/actions/workflows/test.yml)
 # mypkg
 - このリポジトリは授業で作成したROS 2のパッケージです。
@@ -44,4 +43,5 @@ data: '[Toei.Oedo] 状況:現在、１５分以上の遅延はありません。
   
 ## ライセンス
 - このソフトウェアは 3条項BSDライセンス の下で再頒布および使用が許可されています。
+- 詳細は[LICENSE](https://github.com/NaokiMaruyama978/mypkg/LICENSE)を確認してください。
 - ©2025 Naoki Maruyama
