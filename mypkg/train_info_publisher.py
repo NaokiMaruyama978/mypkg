@@ -39,11 +39,10 @@ class FilteredTrainInfoPublisher(Node):
                 railway = train_info.get("odpt:railway", "")
                 if railway in self.target_railways:
                     msg = String()
-                    status = train_info.get("odpt:trainInformationStatus", "情報なし")
                     text = train_info.get("odpt:trainInformationText", {}).get("ja", "詳細なし")
 
                     railway_name = railway.replace("odpt.Railway:", "")
-                    msg.data = f"[{railway_name}] 状況:{text} 詳細:{status}"
+                    msg.data = f"[{railway_name}] 状況:{text}"
                     self.publisher_.publish(msg)
         except Exception as e:
            # self.get_logger().error(f"Failed to fetch train info: {e}")
