@@ -11,7 +11,7 @@ class TrainInfoListener(Node):
         super().__init__('train_info_listener')
         self.subscription = self.create_subscription(
             String,
-            'train_delay_info',  # パブリッシャーと同じトピック名
+            'train_delay_info',  
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
