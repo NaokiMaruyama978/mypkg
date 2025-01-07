@@ -14,7 +14,7 @@ class TrainInfoListener(Node):
             'train_delay_info',  
             self.listener_callback,
             10)
-        self.subscription  # prevent unused variable warning
+        self.subscription  
         self.get_logger().info('Train Info Listener has started.')
 
     def listener_callback(self, msg):
