@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # SPDX-FileCopyrightText: 2025 Naoki Maruyama
 # SPDX-License-Identifier: BSD-3-Clause
 
