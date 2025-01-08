@@ -7,12 +7,6 @@ from std_msgs.msg import String
 import requests
 import sys
 
-import rclpy
-from rclpy.node import Node
-from std_msgs.msg import String
-import requests
-import sys
-
 class FilteredTrainInfoPublisher(Node):
     def __init__(self):
         super().__init__('filtered_train_info_publisher')
