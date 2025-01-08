@@ -5,11 +5,21 @@
 
 ## ノード概要
 ### `train_info_publisher` ノード
-- トピック名: `train_delay_info`
-- 60秒ごとに以下の形式で3つの路線の運行情報をパブリッシュします:
+-  [odpt.com](https://developer.odpt.org/)のAPIを利用して、60秒ごとに都営新宿線・都営浅草線・都営大江戸線の運行情報を取得します。
+- 取得したデータを`train_delay_info`というトピックにパブリッシュします
+### `train_delay_info` トピック
+- メッセージ型:String
+- 以下の形式でデータが公開されます
   ```
   [路線]状況:XXXX
   ```
+## 依存関係
+このパッケージを動かすために必要なライブラリ：
+- `requests`: HTTPリクエストを処理するために必要です。  
+インストール方法：
+```
+$ pip install requests
+```
 
 ## 使用方法
 ### 実行準備
