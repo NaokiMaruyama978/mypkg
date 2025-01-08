@@ -6,7 +6,7 @@
 ## ノード概要
 ### `train_info_publisher` ノード
 -  [odpt.com](https://developer.odpt.org/)のAPIを利用して、60秒ごとに都営新宿線・都営浅草線・都営大江戸線の運行情報を取得します。
-- 取得したデータを`train_delay_info`というトピックにパブリッシュします
+- 取得したデータを`train_delay_info`というトピックにパブリッシュします。
 ### `train_delay_info` トピック
 - メッセージ型:String
 - 以下の形式でデータが公開されます
