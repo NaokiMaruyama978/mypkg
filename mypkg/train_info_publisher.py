@@ -10,15 +10,23 @@ import sys
 class FilteredTrainInfoPublisher(Node):
     def __init__(self):
         super().__init__('filtered_train_info_publisher')
-        self.publisher_ = self.create_publisher(String, 'train_delay_info', 10)
+
+        # パブリッシャ辞書を初期化（別名を使用）
+        self.railway_publishers = {}
+
+        # 各路線ごとのパブリッシャを設定
+        self.railway_publishers["Toei.Shinjuku"] = self.create_publisher(String, 'train_info_shinjuku', 10)
+        self.railway_publishers["Toei.Oedo"] = self.create_publisher(String, 'train_info_oedo', 10)
+        self.railway_publishers["Toei.Asakusa"] = self.create_publisher(String, 'train_info_asakusa', 10)
+
         self.timer = self.create_timer(60.0, self.timer_callback)  # 60秒ごとに更新
         self.api_url = "https://api.odpt.org/api/v4/odpt:TrainInformation"
-        self.api_key = "3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa"  
-        self.target_railways = [
-            "odpt.Railway:Toei.Shinjuku",  # 都営新宿線
-            "odpt.Railway:Toei.Oedo",     # 都営大江戸線
-            "odpt.Railway:Toei.Asakusa",  # 都営浅草線
-        ]
+        self.api_key = "3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa"
+        self.target_railways = {
+            "Toei.Shinjuku": "odpt.Railway:Toei.Shinjuku",
+            "Toei.Oedo": "odpt.Railway:Toei.Oedo",
+            "Toei.Asakusa": "odpt.Railway:Toei.Asakusa",
+        }
 
     def timer_callback(self):
         try:
@@ -28,20 +36,18 @@ class FilteredTrainInfoPublisher(Node):
             response.raise_for_status()
             train_info_list = response.json()
 
-            # 指定した路線の情報を取得
-            for train_info in train_info_list:
-                railway = train_info.get("odpt:railway", "")
-                if railway in self.target_railways:
-                    msg = String()
-                    text = train_info.get("odpt:trainInformationText", {}).get("ja", "詳細なし")
+            # 指定した路線ごとに情報を取得
+            for railway_name, railway_id in self.target_railways.items():
+                for train_info in train_info_list:
+                    if train_info.get("odpt:railway", "") == railway_id:
+                        msg = String()
+                        text = train_info.get("odpt:trainInformationText", {}).get("ja", "詳細なし")
 
-                    railway_name = railway.replace("odpt.Railway:", "")
-                    msg.data = f"[{railway_name}]状況:{text}"
-                    self.publisher_.publish(msg)
+                        # メッセージの生成とパブリッシュ
+                        msg.data = f"[{railway_name}]状況:{text}"
+                        self.railway_publishers[railway_name].publish(msg)
         except Exception as e:
-           # self.get_logger().error(f"Failed to fetch train info: {e}")
             sys.exit(1)
-
 
 def main(args=None):
     rclpy.init(args=args)
@@ -50,7 +56,6 @@ def main(args=None):
 
     publisher.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

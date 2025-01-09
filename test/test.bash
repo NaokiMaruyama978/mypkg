@@ -13,6 +13,7 @@ source $dir/.bashrc
 timeout 12 ros2 launch mypkg train_info_publisher.launch.py | tee - /tmp/mypkg.log
 
 # ログファイルの内容を検索
-cat /tmp/mypkg.log | grep '[Toei.Asakusa]'
-cat /tmp/mypkg.log | grep '[Toei.Shinjuku]'
-cat /tmp/mypkg.log | grep '[Toei.Oedo]'
+cat /tmp/mypkg.log | grep '[Shinjuku Line]'
+cat /tmp/mypkg.log | grep '[Oedo Line]'
+cat /tmp/mypkg.log | grep '[Asakusa Line]'
+
