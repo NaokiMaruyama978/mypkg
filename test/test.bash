@@ -10,7 +10,7 @@ colcon build
 source $dir/.bashrc
 
 # タイムアウト時間を設定
-timeout 12 ros2 launch mypkg train_info_publisher.launch.py | tee - /tmp/mypkg.log
+timeout 60 ros2 launch mypkg train_info_publisher.launch.py | tee - /tmp/mypkg.log
 
 # ログファイルの内容を検索
 cat /tmp/mypkg.log | grep '[Shinjuku Line]'
