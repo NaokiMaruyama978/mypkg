@@ -6,13 +6,15 @@
 ## ノード概要
 ### `train_info_publisher` ノード
 -  [odpt.com](https://developer.odpt.org/)のAPIを利用して、60秒ごとに都営新宿線・都営浅草線・都営大江戸線の運行情報を取得します。
-- 取得したデータを`train_delay_info`というトピックにパブリッシュします。
-### `train_delay_info` トピック
-- メッセージ型:String
-- 以下の形式でデータが公開されます
-  ```
-  [路線]状況:XXXX
-  ```
+- 取得した3つの路線のデータをトピックにパブリッシュします。
+#### 公開されるトピック
+- 公開されるトピックは以下の３つです。
+  - `train_info_shinjuku`
+    - 都営新宿線の運行情報
+  - `train_info_oedo`
+    - 都営大江戸線の運行情報
+  - `train_info_asakusa`
+    - 都営浅草線の運行情報
 ## 依存関係
 このパッケージを動かすために必要なライブラリ：
 - `requests`: HTTPリクエストを処理するために必要です。  
@@ -26,21 +28,47 @@ $ pip install requests
 1\. [odpt.com](https://developer.odpt.org/)でアカウントを作成し、APIキーを取得してください。   
 2\. `train_info_publisher.py`の23行目のself.api_key = `"3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa" `を取得したAPIキーに変更して下さい
 
-### 端末1でtrain_info_publisher.pyを実行し、別の端末2でtopic確認した例
-端末1
+### ノードの起動とデータの確認
+`train_info_publisher`の実行
 ```
 $ ros2 run mypkg train_info_publisher
 ```
-端末2
+**都営新宿線**
 ```
-$ ros2 topic echo train_delay_info
+$ ros2 topic echo train_info_shinjuku
 ```
+**都営大江戸線**
 ```
-data: '[Toei.Asakusa] 状況:浅草線は、16時31分頃、三田駅にて発生した急病人救護のため、押上駅方面行列車のダイヤが乱れてい ます。'
+$ ros2 topic echo train_info_oedo
+```
+**都営浅草線**
+```
+$ ros2 topic echo train_info_asakusa
+```
+#### 出力例
+**都営新宿線**
+```
+$ ros2 topic echo train_info_shinjuku
+data: '[Toei.Shinjuku]状況:現在、１５分以上の遅延はありません。'
 ---
-data: '[Toei.Shinjuku] 状況:現在、１５分以上の遅延はありません。'
+data: '[Toei.Shinjuku]状況:現在、１５分以上の遅延はありません。'
 ---
-data: '[Toei.Oedo] 状況:現在、１５分以上の遅延はありません。'
+```
+**都営大江戸線**
+```
+$ ros2 topic echo train_info_oedo
+data: '[Toei.Shinjuku]状況:現在、１５分以上の遅延はありません。'
+---
+data: '[Toei.Shinjuku]状況:現在、１５分以上の遅延はありません。'
+---
+```
+**都営浅草線**
+```
+$ ros2 topic echo train_info_asakusa
+data: '[Toei.Asakusa] 状況:浅草線は、16時31分頃、三田駅にて発生した急病人救護のため、押上駅方面行列車のダイヤが乱れています。'
+---
+data: '[Toei.Asakusa] 状況:浅草線は、16時31分頃、三田駅にて発生した急病人救護のため、押上駅方面行列車のダイヤが乱れています。'
+---
 ```
 ### テスト用コード
 - test_listener.py
