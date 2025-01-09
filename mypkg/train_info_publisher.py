@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Naoki Maruyama
 # SPDX-License-Identifier: BSD-3-Clause
 
+import os
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -10,6 +11,11 @@ import sys
 class FilteredTrainInfoPublisher(Node):
     def __init__(self):
         super().__init__('train_info_publisher')
+
+        # 環境変数からAPIキーを取得
+        self.api_key = os.environ.get("ODPT_API_KEY")
+        if not self.api_key:
+            sys.exit(1)
 
         # パブリッシャ辞書を初期化（別名を使用）
         self.railway_publishers = {}
@@ -21,7 +27,6 @@ class FilteredTrainInfoPublisher(Node):
 
         self.timer = self.create_timer(60.0, self.timer_callback)  # 60秒ごとに更新
         self.api_url = "https://api.odpt.org/api/v4/odpt:TrainInformation"
-        self.api_key = "3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa"
         self.target_railways = {
             "Toei.Shinjuku": "odpt.Railway:Toei.Shinjuku",
             "Toei.Oedo": "odpt.Railway:Toei.Oedo",
