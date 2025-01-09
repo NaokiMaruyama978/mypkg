@@ -17,10 +17,10 @@ class FilteredTrainInfoPublisher(Node):
         if not self.api_key:
             sys.exit(1)
 
-        # パブリッシャ辞書を初期化（別名を使用）
+   
         self.railway_publishers = {}
 
-        # 各路線ごとのパブリッシャを設定
+        
         self.railway_publishers["Toei.Shinjuku"] = self.create_publisher(String, 'train_info_shinjuku', 10)
         self.railway_publishers["Toei.Oedo"] = self.create_publisher(String, 'train_info_oedo', 10)
         self.railway_publishers["Toei.Asakusa"] = self.create_publisher(String, 'train_info_asakusa', 10)
@@ -35,20 +35,20 @@ class FilteredTrainInfoPublisher(Node):
 
     def timer_callback(self):
         try:
-            # APIリクエストを送信
+           
             params = {"acl:consumerKey": self.api_key}
             response = requests.get(self.api_url, params=params)
             response.raise_for_status()
             train_info_list = response.json()
 
-            # 指定した路線ごとに情報を取得
+          
             for railway_name, railway_id in self.target_railways.items():
                 for train_info in train_info_list:
                     if train_info.get("odpt:railway", "") == railway_id:
                         msg = String()
                         text = train_info.get("odpt:trainInformationText", {}).get("ja", "詳細なし")
 
-                        # メッセージの生成とパブリッシュ
+                       
                         msg.data = f"[{railway_name}]状況:{text}"
                         self.railway_publishers[railway_name].publish(msg)
         except Exception as e:
