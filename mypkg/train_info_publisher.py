@@ -9,7 +9,7 @@ import sys
 
 class FilteredTrainInfoPublisher(Node):
     def __init__(self):
-        super().__init__('filtered_train_info_publisher')
+        super().__init__('train_info_publisher')
 
         # パブリッシャ辞書を初期化（別名を使用）
         self.railway_publishers = {}
