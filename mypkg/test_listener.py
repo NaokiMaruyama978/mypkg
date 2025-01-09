@@ -13,19 +13,19 @@ class TrainInfoListener(Node):
         self.subscribers = {
             "Toei.Shinjuku": self.create_subscription(
                 String,
-                'train_delay_info_shinjuku',
+                'train_info_shinjuku',
                 self.shinjuku_callback,
                 10
             ),
             "Toei.Oedo": self.create_subscription(
                 String,
-                'train_delay_info_oedo',
+                'train_info_oedo',
                 self.oedo_callback,
                 10
             ),
             "Toei.Asakusa": self.create_subscription(
                 String,
-                'train_delay_info_asakusa',
+                'train_info_asakusa',
                 self.asakusa_callback,
                 10
             ),
