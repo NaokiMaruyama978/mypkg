@@ -26,7 +26,13 @@ $ pip install requests
 ## 使用方法
 ### 実行準備
 1\. [odpt.com](https://developer.odpt.org/)でアカウントを作成し、APIキーを取得してください。   
-2\. `train_info_publisher.py`の23行目のself.api_key = `"3o7usx306xa0q9chlckckk2xxm2jvthznu0vnk3fktuu9gdirfp3pzcecwlpagwa" `を取得したAPIキーに変更して下さい
+2.環境変数を設定:  
+```
+$ echo "export ODPT_API_KEY='取得したAPIキー'" >> ~/.bashrc
+```
+```
+$ source ~/.bashrc
+```
 
 ### ノードの起動とデータの確認
 `train_info_publisher`の実行
